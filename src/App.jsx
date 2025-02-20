@@ -1,5 +1,4 @@
 import { useState } from 'react'
-import './App.css'
 import { SearchBar } from "./components/SearchBar";
 import { fetchMovies } from "./api/movieApi";
 
