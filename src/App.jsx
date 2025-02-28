@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import { SearchBar } from "./components/SearchBar";
 import { fetchMovies } from "./api/movieApi";
+import { Link } from "react-router";
 
 function App() {
   const [movies, setMovies] = useState([]);
@@ -21,6 +22,7 @@ function App() {
             <div key={movie.imdbID}>
               <h3>{movie.Title}</h3>
               <img src={movie.Poster} alt={movie.Title} width="100" />
+              <Link to={`/movie/${movie.imdbID}`}>Movie details</Link>
             </div>
           ))
         ) : (
