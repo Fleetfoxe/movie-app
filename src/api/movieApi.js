@@ -13,8 +13,5 @@ const fetchMovies = async (query) => {
   }
 };
 
-/* const fetchMovies = (query) => {
-  console.log(`${BASE_URL}?apikey=${API_KEY}&s=${query}`)
-} */
 
 export { fetchMovies };

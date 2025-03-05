@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { SearchBar } from "./components/SearchBar";
 import { fetchMovies } from "./api/movieApi";
 import { Link } from "react-router";
@@ -9,7 +9,19 @@ function App() {
   const handleSearch = async (query) => {
     const results = await fetchMovies(query);
     setMovies(results);
+    
+    if (results) {
+      setMovies(results);
+      sessionStorage.setItem("movies", JSON.stringify(results));
+    }
   };
+
+  useEffect(() => {
+    const savedMovies = sessionStorage.getItem("movies");
+    if (savedMovies) {
+      setMovies(JSON.parse(savedMovies));
+    }
+  }, []);
 
   return (
     <>
