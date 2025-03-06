@@ -9,7 +9,6 @@ const LandingPage = () => {
 
   const handleSearch = async (query) => {
     const results = await fetchMovies(query);
-    setMovies(results);
     
     if (results) {
       setMovies(results);
