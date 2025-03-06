@@ -30,7 +30,7 @@ const LandingPage = () => {
       <div>
         {movies.length > 0 ? (
           movies.map((movie) => (
-            <div key={movie.imdbID}>
+            <div key={movie.imdbID} className="movie-item">
               <h3>{movie.Title}</h3>
               <img src={movie.Poster} alt={movie.Title} width="100" />
               <Link to={`/movie/${movie.imdbID}`}>Movie details</Link>
