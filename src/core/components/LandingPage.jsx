@@ -1,8 +1,8 @@
 import { useState, useEffect } from 'react'
 import { SearchBar } from "../components/SearchBar";
 import { fetchMovies } from "../../api/movieApi";
-import { Link } from "react-router";
-import Button from '@mui/material/Button';
+import { Container, Box, Typography } from "@mui/material";
+import SearchResults from "./SearchResults";
 
 const LandingPage = () => {
 
@@ -24,25 +24,21 @@ const LandingPage = () => {
     }
   }, []);
   
-  return <>{
-    <div>
-      <h1>Movie Search App</h1>
+  return (
+    <>
+     <Typography variant="h3" align="center" sx={{ mt: 3 }}>
+      Movie Search App
+    </Typography>
+
+    <Box sx={{ display: "flex", justifyContent: "center", mt: 2 }}>
       <SearchBar onSearch={handleSearch} />
-      <div>
-        {movies.length > 0 ? (
-          movies.map((movie) => (
-            <div key={movie.imdbID} className="movie-item">
-              <h3>{movie.Title}</h3>
-              <img src={movie.Poster} alt={movie.Title} width="100" />
-              <Link to={`/movie/${movie.imdbID}`}><Button variant="contained">See more</Button></Link>
-            </div>
-          ))
-        ) : (
-          <p>No results found</p>
-        )}
-      </div>
-      </div>
-  }</>;
+    </Box>
+    
+    <Container size={{ mt: 4 }}>
+      <SearchResults movies={movies} />
+    </Container>
+    </>
+  );
 };
 
 export default LandingPage;
