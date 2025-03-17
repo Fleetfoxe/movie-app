@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react'
 import { SearchBar } from "../components/SearchBar";
 import { fetchMovies } from "../../api/movieApi";
 import { Link } from "react-router";
+import Button from '@mui/material/Button';
 
 const LandingPage = () => {
 
@@ -33,7 +34,7 @@ const LandingPage = () => {
             <div key={movie.imdbID} className="movie-item">
               <h3>{movie.Title}</h3>
               <img src={movie.Poster} alt={movie.Title} width="100" />
-              <Link to={`/movie/${movie.imdbID}`}>Movie details</Link>
+              <Link to={`/movie/${movie.imdbID}`}><Button variant="contained">See more</Button></Link>
             </div>
           ))
         ) : (
