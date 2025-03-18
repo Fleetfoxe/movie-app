@@ -9,7 +9,7 @@ export default function SearchResults({ movies }) {
       {movies.length > 0 ? (
         movies.map((movie, index) => (
           <React.Fragment key={movie.imdbID}>
-            <Link to={`/movie/${movie.imdbID}`}>
+            <Link to={`/movie/${movie.imdbID}`} style={{ textDecoration: "none", color: "inherit" }}>
             <ListItem size="medium">
             <MovieCard movie={movie} />
             </ListItem>
