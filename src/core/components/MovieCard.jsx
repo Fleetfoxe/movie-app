@@ -1,33 +1,42 @@
 import React from "react";
 import { Card, CardMedia, CardContent, Typography, Box } from "@mui/material";
+import BrokenImageIcon from "@mui/icons-material/BrokenImage";
 
-export default function MovieCard({ movie }) {
+const MovieCard = ({ movie }) => {
   return (
-    <Card
-      sx={{
-        display: "flex",
-        width: "100%",
-        borderRadius: 2,
-        boxShadow: 3,
-        p: 1, // Padding based on size
-      }}
-      size="small" // Adjust card size dynamically
-    >
-      {/* Movie Poster */}
-      <CardMedia
-        component="img"
-        sx={{ width: 80, height: 120, objectFit: "cover" }}
-        image={movie.Poster !== "N/A" ? movie.Poster : "https://via.placeholder.com/100x150"}
-        alt={movie.Title}
-      />
+    <Card sx={{ display: "flex", flexDirection: "row", alignItems: "center", width: "100%", padding: 2, marginBottom: 2 }}>
+      {movie.Poster !== "N/A" ? (
+        <CardMedia
+          component="img"
+          sx={{ width: 120, height: 180, borderRadius: 1 }}
+          image={movie.Poster}
+          alt={movie.Title}
+          onError={(e) => (e.target.src = "")}
+        />
+      ) : (
+        <Box
+          sx={{
+            width: 120,
+            height: 180,
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "center",
+            backgroundColor: "#f0f0f0",
+            borderRadius: 1,
+          }}
+        >
+          <BrokenImageIcon sx={{ fontSize: 50, color: "#9e9e9e" }} />
+        </Box>
+      )}
 
-      {/* Movie Details */}
-      <Box sx={{ display: "flex", flexDirection: "column", justifyContent: "center", padding: 1 }}>
-        <Typography variant="h6" size="medium">{movie.Title}</Typography>
-        <Typography variant="body2" color="gray" size="small">
+      <CardContent sx={{ flex: 1, paddingLeft: 2 }}>
+        <Typography variant="h6">{movie.Title}</Typography>
+        <Typography variant="body2" color="textSecondary">
           {movie.Year}
         </Typography>
-      </Box>
+      </CardContent>
     </Card>
   );
-}
+};
+
+export default MovieCard;
