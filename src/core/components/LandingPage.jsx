@@ -27,7 +27,7 @@ const LandingPage = () => {
   return (
     <>
      <Typography variant="h3" align="center" sx={{ mt: 3 }}>
-      Movie Search App
+      Movie App
     </Typography>
 
     <Box sx={{ display: "flex", justifyContent: "center", mt: 2 }}>
