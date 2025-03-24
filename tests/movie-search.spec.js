@@ -8,18 +8,18 @@ test('Movie list is generated and contains the searched movie', async ({ page })
   // Type a movie title in the search input
   await page.fill('input[placeholder="Search for a movie..."]', movieTitle);
 
-  await page.click('button:has-text("Search")');
+  await page.getByTestId('search-button').click();
+
+  await page.waitForLoadState("networkidle");
 
   // Wait for the movie list to appear
-  await page.waitForSelector('.movie-item');
+  await expect(page.getByTestId('search-item').first()).toBeVisible();
 
   // Verify that at least one movie appears in the list
-  const movieItems = await page.locator('.movie-item').count();
+  const movieItems = await page.getByTestId('search-item').count();
   expect(movieItems).toBeGreaterThan(0);
 
-// Get all movie titles displayed in the list
-const movieTitles = await page.locator('.movie-item h3').allInnerTexts();
+  // Verify that the first movie in the list has the movie title that was searched for
+  await expect(page.getByTestId('movie-title').first()).toHaveText(movieTitle);
 
-// Ensure at least one of the displayed movie titles matches the searched movie
-expect(movieTitles.some(title => title.trim() === movieTitle)).toBeTruthy();
 });

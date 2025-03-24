@@ -30,7 +30,7 @@ const MovieCard = ({ movie }) => {
       )}
 
       <CardContent sx={{ flex: 1, paddingLeft: 2 }}>
-        <Typography variant="h6">{movie.Title}</Typography>
+        <Typography data-testid="movie-title" variant="h6">{movie.Title}</Typography>
         <Typography variant="body2" color="textSecondary">
           {movie.Year}
         </Typography>
