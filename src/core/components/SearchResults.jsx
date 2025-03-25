@@ -10,9 +10,9 @@ export default function SearchResults({ movies }) {
         movies.map((movie, index) => (
           <React.Fragment key={movie.imdbID}>
             <Link data-testid="search-item" to={`/movie/${movie.imdbID}`} style={{ textDecoration: "none", color: "inherit" }}>
-            <ListItem size="medium">
-            <MovieCard movie={movie} />
-            </ListItem>
+              <ListItem size="medium">
+                <MovieCard movie={movie} />
+              </ListItem>
             </Link>
             {index < movies.length - 1 && <Divider />}
           </React.Fragment>
